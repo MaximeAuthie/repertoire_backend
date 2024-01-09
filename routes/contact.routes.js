@@ -9,5 +9,11 @@ const contactController = require('../controllers/contact.controller');
 
 //! Liste des routes
 
+    //? Obtenir tous les contacts
+    router.get('/list', contactController.getAllContacts);
+
+    //? Ajouter un contact
+    router.post('/add', contactController.addContact);
+
 //! Exporter le router
-module.export = router;
+module.exports = router;
