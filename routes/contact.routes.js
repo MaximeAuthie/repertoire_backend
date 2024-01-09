@@ -10,7 +10,7 @@ const contactController = require('../controllers/contact.controller');
 //! Liste des routes
 
     //? Obtenir tous les contacts
-    router.get('/list', contactController.getAllContacts);
+    router.get('/list/:id', contactController.getAllContactsByUser);
 
     //? Ajouter un contact
     router.post('/add', contactController.addContact);
