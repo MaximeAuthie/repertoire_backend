@@ -6,8 +6,11 @@ const userRouter = require('./routes/user.routes');
 //! Importer Express
 const express = require('express');
 
-//! Importer Dotenv pour gérer les variables d'environnement
+//! Importer la dépendance Dotenv pour gérer les variables d'environnement
 require('dotenv').config();
+
+//! Importer la dépendance http-status-codes pour gérer les codes HTTP
+const { StatusCodes } = require('http-status-codes');
 
 //! Créer l'app
 const app = express();
@@ -32,7 +35,7 @@ app.use('/users', userRouter);
 app.use((err, req, res, next) => {
     console.log(err);
     res
-        .status(500)
+        .status(StatusCodes.INTERNAL_SERVER_ERROR)
         .send(err);
 })
 
