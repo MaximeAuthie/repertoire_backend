@@ -7,7 +7,7 @@ const Schema = mongoose.Schema;
 //! Créer le modèle de document
 const contactSchema = new Schema({
     firstName: {type: String, required: true},
-    lastname: {type: String, required: true},
+    lastName: {type: String, required: true},
     email: {type: String, required: true, unique: true},
     landlinePhone1: String,
     landlinePhone2: String,
@@ -16,4 +16,4 @@ const contactSchema = new Schema({
     user: {type: mongoose.Types.ObjectId, ref: 'User'}
 }, {timestamps: true});
 
-module.export = mongoose.model('Contact', contactSchema);
+module.exports = mongoose.model('Contact', contactSchema);

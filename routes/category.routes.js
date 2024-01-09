@@ -11,4 +11,4 @@ const categoryController = require('../controllers/category.controller');
 
 
 //! Exporter le router
-module.export = router;
+module.exports = router;
