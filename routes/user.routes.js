@@ -9,6 +9,8 @@ const userController = require('../controllers/user.controller');
 
 //! Liste des routes
 
+    //? Ajouter un utilisateur
+    router.post('/add', userController.addUser);
 
 //! Exporter le router
-module.export = router;
+module.exports = router;
