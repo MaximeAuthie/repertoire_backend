@@ -9,6 +9,6 @@ const categorySchema = new Schema({
     name: {type: String, required: true},
     color: {type: String, required: true},
     user: {type: mongoose.Types.ObjectId, ref: 'User'}
-})
+});
 
-module.export = mongoose.model('Catagory', categorySchema);
+module.exports = mongoose.model('Category', categorySchema);
