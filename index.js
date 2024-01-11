@@ -36,7 +36,7 @@ app.use((err, req, res, next) => {
     console.log(err);
     res
         .status(StatusCodes.INTERNAL_SERVER_ERROR)
-        .send(err);
+        .send(err.message);
 })
 
 //! Ecouter le port
