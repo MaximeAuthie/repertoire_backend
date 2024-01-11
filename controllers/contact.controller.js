@@ -3,6 +3,8 @@ const Contact = require('../models/contact');
 
 //! Importer le helper "catchAsync"
 const catchAsync = require('../helpers/catchAsync');
+
+//! Importer le module "StatusCode" de la dépendance "http-status-codes"
 const { StatusCodes } = require('http-status-codes');
 
 //! Liste des méthodes
