@@ -12,5 +12,11 @@ const userController = require('../controllers/user.controller');
     //? Ajouter un utilisateur
     router.post('/add', userController.addUser);
 
+    //? Obtenir un utilisateur
+    router.get('/:id', userController.getUser);
+
+    //? Mettre à jour un utilisateur
+    router.patch('/update/:id', userController.updateUser);
+
 //! Exporter le router
 module.exports = router;
