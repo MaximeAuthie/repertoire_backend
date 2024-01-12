@@ -16,7 +16,7 @@ const { StatusCodes } = require('http-status-codes');
         const contact = await Contact.create(req.body);
 
         // Si la requête s'est exécutée correctement
-        res
+        return res
             .status(StatusCodes.ACCEPTED)
             .send(contact);
     });
@@ -29,11 +29,11 @@ const { StatusCodes } = require('http-status-codes');
 
         // Vérifier si la requête renvoie un résultat
         if (contact) {
-            res
-            .status(StatusCodes.ACCEPTED)
-            .send(contact);
+            return res
+                .status(StatusCodes.ACCEPTED)
+                .send(contact);
         } else {
-            res
+            return res
                 .status(StatusCodes.NO_CONTENT)
                 .send('The requested contact doesn\'t exist');
         }
@@ -68,11 +68,11 @@ const { StatusCodes } = require('http-status-codes');
 
         // Vérifier si la requête renvoie un résultat
         if (contact) {
-            res
+            return res
                 .status(StatusCodes.ACCEPTED)
                 .send(contact);
         } else {
-            res
+            return res
                 .status(StatusCodes.NOT_FOUND)
                 .send('The requested contact doesn\'t exist');
         }
@@ -86,11 +86,11 @@ const { StatusCodes } = require('http-status-codes');
 
         // Vérifier si la requête renvoie un résultat
         if (contact) {
-            res
+            return res
                 .status(StatusCodes.ACCEPTED)
                 .send('Contact deleted with success');
         } else {
-            res
+            return res
                 .status(StatusCodes.NOT_FOUND)
                 .send('The requested contact doesn\'t exist')
         }

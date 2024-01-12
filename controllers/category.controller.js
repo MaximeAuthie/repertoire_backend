@@ -16,7 +16,7 @@ const { StatusCodes } = require('http-status-codes');
         const category = await Category.create(req.body);
 
         // Si la requête s'est exécutée correctement
-        res
+        return res
             .status(StatusCodes.ACCEPTED)
             .send(category);
     });
@@ -29,11 +29,11 @@ const { StatusCodes } = require('http-status-codes');
         
         // Récupérer le contact grace à son id
         if (category) {
-            res
+            return res
                 .status(StatusCodes.ACCEPTED)
                 .send(category);
         } else {
-            res
+            return res
                 .status(StatusCodes.NOT_FOUND)
                 .send('The requested category doesn\'t exist');
         }
@@ -49,11 +49,11 @@ const { StatusCodes } = require('http-status-codes');
 
         // Vérifier si la requête renvoie un résultat
         if (categories.length) {
-            res
+            return res
                 .status(StatusCodes.ACCEPTED)
                 .send(categories);
         } else {
-            res
+            return res
                 .status(StatusCodes.NOT_FOUND)
                 .send('No category found for this user');
         }
@@ -67,11 +67,11 @@ const { StatusCodes } = require('http-status-codes');
 
         // Vérifier si la requête renvoie un résultat
         if (category) {
-            res
+            return res
                 .status(StatusCodes.ACCEPTED)
                 .send(category);
         } else {
-            res
+            return res
                 .status(StatusCodes.NOT_FOUND)
                 .send('The requested category doesn\'t exist');
         }
@@ -85,11 +85,11 @@ const { StatusCodes } = require('http-status-codes');
 
         // Vérifier si la requête s'est exécutée correctement
         if (category) {
-            res
+            return res
                 .status(StatusCodes.ACCEPTED)
                 .send('Category deleted with success');
         } else {
-            res
+            return res
                 .status(StatusCodes.NOT_FOUND)
                 .send('The requested category doesn\'t exist');
         }
