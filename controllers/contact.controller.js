@@ -18,7 +18,7 @@ const { StatusCodes } = require('http-status-codes');
         // Si la requête s'est exécutée correctement
         return res
             .status(StatusCodes.ACCEPTED)
-            .send(contact);
+            .json(contact);
     });
 
     //? Obtenir un contact à partir de son id
@@ -52,11 +52,11 @@ const { StatusCodes } = require('http-status-codes');
         if (contacts.length) {
             res
             .status(StatusCodes.ACCEPTED)
-            .send(contacts);
+            .json(contacts);
         } else {
             res
                 .status(StatusCodes.NO_CONTENT)
-                .send('No contact found for this user')
+                .json({message: 'No contact found for this user'});
         }
     });
 
@@ -70,11 +70,11 @@ const { StatusCodes } = require('http-status-codes');
         if (contact) {
             return res
                 .status(StatusCodes.ACCEPTED)
-                .send(contact);
+                .json(contact);
         } else {
             return res
                 .status(StatusCodes.NOT_FOUND)
-                .send('The requested contact doesn\'t exist');
+                .json({message: 'The requested contact doesn\'t exist'});
         }
     })
 
@@ -88,11 +88,11 @@ const { StatusCodes } = require('http-status-codes');
         if (contact) {
             return res
                 .status(StatusCodes.ACCEPTED)
-                .send('Contact deleted with success');
+                .json({message: 'Contact deleted with success'});
         } else {
             return res
                 .status(StatusCodes.NOT_FOUND)
-                .send('The requested contact doesn\'t exist')
+                .send({message: 'The requested contact doesn\'t exist'});
         }
     } )
 

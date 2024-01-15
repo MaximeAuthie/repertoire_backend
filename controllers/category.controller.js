@@ -18,7 +18,7 @@ const { StatusCodes } = require('http-status-codes');
         // Si la requête s'est exécutée correctement
         return res
             .status(StatusCodes.ACCEPTED)
-            .send(category);
+            .json(category);
     });
 
     //? Obtenir une catégorie à partir de son id
@@ -31,11 +31,11 @@ const { StatusCodes } = require('http-status-codes');
         if (category) {
             return res
                 .status(StatusCodes.ACCEPTED)
-                .send(category);
+                .json(category);
         } else {
             return res
                 .status(StatusCodes.NOT_FOUND)
-                .send('The requested category doesn\'t exist');
+                .json({message: 'The requested category doesn\'t exist'});
         }
     });
 
@@ -51,11 +51,11 @@ const { StatusCodes } = require('http-status-codes');
         if (categories.length) {
             return res
                 .status(StatusCodes.ACCEPTED)
-                .send(categories);
+                .json(categories);
         } else {
             return res
                 .status(StatusCodes.NOT_FOUND)
-                .send('No category found for this user');
+                .json({message:'No category found for this user'});
         }
     });
 
@@ -69,11 +69,11 @@ const { StatusCodes } = require('http-status-codes');
         if (category) {
             return res
                 .status(StatusCodes.ACCEPTED)
-                .send(category);
+                .json(category);
         } else {
             return res
                 .status(StatusCodes.NOT_FOUND)
-                .send('The requested category doesn\'t exist');
+                .json({message: 'The requested category doesn\'t exist'});
         }
     });
 
@@ -87,11 +87,11 @@ const { StatusCodes } = require('http-status-codes');
         if (category) {
             return res
                 .status(StatusCodes.ACCEPTED)
-                .send('Category deleted with success');
+                .json({message: 'Category deleted with success'});
         } else {
             return res
                 .status(StatusCodes.NOT_FOUND)
-                .send('The requested category doesn\'t exist');
+                .json({message: 'The requested category doesn\'t exist'});
         }
     });
 
