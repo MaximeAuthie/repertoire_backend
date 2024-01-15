@@ -48,8 +48,8 @@ const { StatusCodes } = require('http-status-codes');
         // Générer un JWT
         const token = jwt.sign({
             id: user.id,
-            nom: user.nom,
-            prenom: user.prenom,
+            firstName: user.firstName,
+            lastName: user.lastName,
             email: user.email
         }, process.env.JWT_PRIVATE_KEY, {expiresIn: process.env.JWT_DURATION});
 
