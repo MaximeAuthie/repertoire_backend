@@ -29,7 +29,7 @@ const { StatusCodes } = require('http-status-codes');
         }
 
         // Vérifier si l'utilisateur existe
-        const user = User.findOne({email: email});
+        const user = await User.findOne({email: email});
 
         if (!user) {
             return res
