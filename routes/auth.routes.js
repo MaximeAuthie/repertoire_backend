@@ -10,7 +10,7 @@ const authController = require('../controllers/auth.controller');
 //! Liste des routes
 
     //? Obtenir un JWT pour authentifier l'utilisateur
-    router.post('/jwt', getJwt);
+    router.post('/logIn', authController.getJwt);
 
 //! Exporter le router
 module.exports = router;
