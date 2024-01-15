@@ -2,6 +2,7 @@
 const contactRouter = require('./routes/contact.routes');
 const categoryRouter = require('./routes/category.routes');
 const userRouter = require('./routes/user.routes');
+const authRouter = require('./routes/auth.routes');
 
 //! Importer Express
 const express = require('express');
@@ -30,6 +31,7 @@ mongoose.connect(process.env.DB_URL);
 app.use('/contacts', contactRouter);
 app.use('/categories', categoryRouter);
 app.use('/users', userRouter);
+app.use('/auth', authRouter);
 
 //! Ecouter les erreurs du helper catchAsync
 app.use((err, req, res, next) => {
