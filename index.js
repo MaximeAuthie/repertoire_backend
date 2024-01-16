@@ -4,6 +4,9 @@ const categoryRouter = require('./routes/category.routes');
 const userRouter = require('./routes/user.routes');
 const authRouter = require('./routes/auth.routes');
 
+//! Importer le middleware "checkJwt"
+const checkJwt = require('./middlewares/jwtCheck');
+
 //! Importer Express
 const express = require('express');
 
@@ -28,9 +31,9 @@ app.use(bodyParser.json());
 mongoose.connect(process.env.DB_URL);
 
 //! Gérer les routes
-app.use('/contacts', contactRouter);
-app.use('/categories', categoryRouter);
-app.use('/users', userRouter);
+app.use('/contacts', checkJwt,contactRouter);
+app.use('/categories', checkJwt, categoryRouter);
+app.use('/users', checkJwt, userRouter);
 app.use('/auth', authRouter);
 
 //! Ecouter les erreurs du helper catchAsync
