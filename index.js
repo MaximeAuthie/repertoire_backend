@@ -10,6 +10,10 @@ const checkJwt = require('./middlewares/jwtCheck');
 //! Importer Express
 const express = require('express');
 
+//! Importer la dépendance "cors" et les options
+const cors = require('cors');
+const {generalCorsOptions, userCorsOptions} = require('./cors/corsOptions');
+
 //! Importer la dépendance Dotenv pour gérer les variables d'environnement
 require('dotenv').config();
 
@@ -31,17 +35,17 @@ app.use(bodyParser.json());
 mongoose.connect(process.env.DB_URL);
 
 //! Gérer les routes
-app.use('/contacts', checkJwt,contactRouter);
-app.use('/categories', checkJwt, categoryRouter);
-app.use('/users', checkJwt, userRouter);
-app.use('/auth', authRouter);
+app.use('/contacts', cors(generalCorsOptions), checkJwt,contactRouter);
+app.use('/categories', cors(generalCorsOptions), checkJwt, categoryRouter);
+app.use('/users', cors(generalCorsOptions), checkJwt, userRouter);
+app.use('/auth', cors(userCorsOptions), authRouter);
 
 //! Ecouter les erreurs du helper catchAsync
 app.use((err, req, res, next) => {
     console.log(err);
     res
         .status(StatusCodes.INTERNAL_SERVER_ERROR)
-        .send(err.message);
+        .json({erreur: err.message});
 })
 
 //! Ecouter le port
