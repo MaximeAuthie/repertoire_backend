@@ -50,11 +50,11 @@ const { StatusCodes } = require('http-status-codes');
 
         // Vérifier si la requête renvoie un résultat
         if (contacts.length) {
-            res
+            return res
             .status(StatusCodes.ACCEPTED)
             .json(contacts);
         } else {
-            res
+            return res
                 .status(StatusCodes.NO_CONTENT)
                 .json({message: 'No contact found for this user'});
         }
