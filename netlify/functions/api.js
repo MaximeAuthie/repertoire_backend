@@ -38,6 +38,6 @@ app.use('/api/users', cors(generalCorsOptions), userRouter);
 app.use('/api/auth', cors(userCorsOptions), authRouter);
 
 // Export the app and the serverless function
-
+module.exports = app;
 module.exports.handler = serverless(app);
 
