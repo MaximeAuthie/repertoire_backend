@@ -13,7 +13,7 @@ const contactSchema = new Schema({
     landlinePhone2: String,
     mobilePhone1: String,
     mobilePhone2: String,
-    user: {type: mongoose.Types.ObjectId, ref: 'User'}
+    user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 }, {timestamps: true});
 
 module.exports = mongoose.model('Contact', contactSchema);
