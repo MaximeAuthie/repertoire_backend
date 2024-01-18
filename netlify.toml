@@ -8,4 +8,4 @@
   to = "/.netlify/functions/api/:splat"
 [build]
   command = "npm install && echo Building Functions"
-  functions = "functions"
+  functions = "netlify/functions"
