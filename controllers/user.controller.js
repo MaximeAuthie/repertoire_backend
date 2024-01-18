@@ -37,6 +37,9 @@ const bcrypt = require('bcrypt');
                 // Modifier le password dans le body de la requête
                 req.body.password = hash;
 
+                // Ajouter la propriété "isActive" au body de la requête
+                req.body.isActive = true;
+
                 // Ajout de l'utilisateur en BDD
                 const user = await User.create(req.body);
 
