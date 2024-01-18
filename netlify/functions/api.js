@@ -9,6 +9,7 @@ const checkJwt = require('../../middlewares/jwtCheck');
 
 //! Importer Express
 const express = require('express');
+const bodyParser = require('body-parser');
 
 //! Importer "serverless-http"
 const serverless = require("serverless-http");
@@ -27,9 +28,7 @@ const { StatusCodes } = require('http-status-codes');
 const app = express();
 
 //! Importer et paramétrer le package body-parser
-// const bodyParser = require('body-parser');
-// // app.use(bodyParser.urlencoded({extended: false}));
-// app.use(bodyParser.json());
+app.use(bodyParser.json());
 
 //! Gérer les routes
 app.use('/api/contacts', cors(generalCorsOptions), checkJwt,contactRouter);
