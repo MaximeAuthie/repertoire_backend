@@ -27,9 +27,9 @@ const { StatusCodes } = require('http-status-codes');
 const app = express();
 
 //! Importer et paramétrer le package body-parser
-const bodyParser = require('body-parser');
-// app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
+// const bodyParser = require('body-parser');
+// // app.use(bodyParser.urlencoded({extended: false}));
+// app.use(bodyParser.json());
 
 //! Gérer les routes
 app.use('/api/contacts', cors(generalCorsOptions), checkJwt,contactRouter);
