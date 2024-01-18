@@ -1,8 +1,8 @@
 //! Importer les routeurs
-const contactRouter = require('./routes/contact.routes');
-const categoryRouter = require('./routes/category.routes');
-const userRouter = require('./routes/user.routes');
-const authRouter = require('./routes/auth.routes');
+// const contactRouter = require('./routes/contact.routes');
+// const categoryRouter = require('./routes/category.routes');
+// const userRouter = require('./routes/user.routes');
+// const authRouter = require('./routes/auth.routes');
 
 //! Importer le middleware "checkJwt"
 const checkJwt = require('./middlewares/jwtCheck');
@@ -38,10 +38,10 @@ mongoose
     .catch((error) => console.error(error));
 
 //! Gérer les routes
-app.use('/contacts', cors(generalCorsOptions), checkJwt,contactRouter);
-app.use('/categories', cors(generalCorsOptions), checkJwt, categoryRouter);
-app.use('/users', cors(generalCorsOptions), userRouter);
-app.use('/auth', cors(userCorsOptions), authRouter);
+app.use('/contacts', cors(generalCorsOptions), checkJwt,'./routes/contact.routes');
+app.use('/categories', cors(generalCorsOptions), checkJwt, './routes/category.routes');
+app.use('/users', cors(generalCorsOptions), './routes/user.routes');
+app.use('/auth', cors(userCorsOptions), './routes/auth.routes');
 
 //! Ecouter les erreurs du helper catchAsync
 app.use((err, req, res, next) => {
