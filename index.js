@@ -32,12 +32,15 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 //! Connecter la BDD
-mongoose.connect(process.env.DB_URL);
+mongoose
+    .connect(process.env.DB_URL)
+    .then(() => console.log('Database connected'))
+    .catch((error) => console.error(error));
 
 //! Gérer les routes
 app.use('/contacts', cors(generalCorsOptions), checkJwt,contactRouter);
 app.use('/categories', cors(generalCorsOptions), checkJwt, categoryRouter);
-app.use('/users', cors(generalCorsOptions), checkJwt, userRouter);
+app.use('/users', cors(generalCorsOptions), userRouter);
 app.use('/auth', cors(userCorsOptions), authRouter);
 
 //! Ecouter les erreurs du helper catchAsync
