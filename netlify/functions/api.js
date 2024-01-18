@@ -26,6 +26,11 @@ const { StatusCodes } = require('http-status-codes');
 //! Créer l'app
 const app = express();
 
+//! Importer et paramétrer le package body-parser
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+
 //! Gérer les routes
 app.use('/api/contacts', cors(generalCorsOptions), checkJwt,contactRouter);
 app.use('/api/categories', cors(generalCorsOptions), checkJwt, categoryRouter);
