@@ -9,7 +9,7 @@ const checkJwt = require('../../middlewares/jwtCheck');
 
 //! Importer Express
 const express = require('express');
-const bodyParser = require('body-parser');
+
 
 //! Importer "serverless-http"
 const serverless = require("serverless-http");
@@ -28,6 +28,7 @@ const { StatusCodes } = require('http-status-codes');
 const app = express();
 
 //! Importer et paramétrer le package body-parser
+const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 //! Connecter la BDD
@@ -41,6 +42,15 @@ app.use('/api/contacts', cors(generalCorsOptions), checkJwt,contactRouter);
 app.use('/api/categories', cors(generalCorsOptions), checkJwt, categoryRouter);
 app.use('/api/users', cors(generalCorsOptions), userRouter);
 app.use('/api/auth', cors(userCorsOptions), authRouter);
+
+
+//! Ecouter les erreurs du helper catchAsync
+app.use((err, req, res, next) => {
+    console.log(err);
+    res
+        .status(StatusCodes.INTERNAL_SERVER_ERROR)
+        .json({erreur: err.message});
+})
 
 // Export the app and the serverless function
 module.exports = app;
