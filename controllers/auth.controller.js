@@ -22,7 +22,7 @@ const { StatusCodes } = require('http-status-codes');
         const { email, password } = req.body;
 
         // Vérifier que toutes les données sont présentes
-        if (!email || ! password) {
+        if (!email || !password) {
             return res
                 .status(StatusCodes.CONFLICT)
                 .json({message: 'Missing data'});
