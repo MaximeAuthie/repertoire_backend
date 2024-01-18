@@ -7,11 +7,6 @@ const checkJwt = require('../middlewares/jwtCheck');
 //! Créer une instance de router
 const router = express.Router();
 
-//! Importer et paramétrer le package body-parser
-const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
-
 //! Importer le contrôleur user
 const userController = require('../controllers/user.controller');
 
