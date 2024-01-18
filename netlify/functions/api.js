@@ -27,10 +27,10 @@ const { StatusCodes } = require('http-status-codes');
 const app = express();
 
 //! Gérer les routes
-app.use('/contacts', cors(generalCorsOptions), checkJwt,contactRouter);
-app.use('/categories', cors(generalCorsOptions), checkJwt, categoryRouter);
-app.use('/users', cors(generalCorsOptions), userRouter);
-app.use('/auth', cors(userCorsOptions), authRouter);
+app.use('/api/contacts', cors(generalCorsOptions), checkJwt,contactRouter);
+app.use('/api/categories', cors(generalCorsOptions), checkJwt, categoryRouter);
+app.use('/api/users', cors(generalCorsOptions), userRouter);
+app.use('/api/auth', cors(userCorsOptions), authRouter);
 
 // Export the app and the serverless function
 
