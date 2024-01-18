@@ -30,6 +30,12 @@ const app = express();
 //! Importer et paramétrer le package body-parser
 app.use(bodyParser.json());
 
+//! Connecter la BDD
+mongoose
+    .connect(process.env.DB_URL)
+    .then(() => console.log('Database connected'))
+    .catch((error) => console.error(error));
+
 //! Gérer les routes
 app.use('/api/contacts', cors(generalCorsOptions), checkJwt,contactRouter);
 app.use('/api/categories', cors(generalCorsOptions), checkJwt, categoryRouter);
