@@ -10,6 +10,8 @@ const checkJwt = require('../../middlewares/jwtCheck');
 //! Importer Express
 const express = require('express');
 
+//! Importer Mongoose
+const mongoose = require('mongoose');
 
 //! Importer "serverless-http"
 const serverless = require("serverless-http");
