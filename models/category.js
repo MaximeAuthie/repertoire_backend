@@ -8,7 +8,7 @@ const Schema = mongoose.Schema;
 const categorySchema = new Schema({
     name: {type: String, required: true},
     color: {type: String, required: true},
-    user: {type: mongoose.Types.ObjectId, ref: 'User'}
+    user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 });
 
 module.exports = mongoose.model('Category', categorySchema);
