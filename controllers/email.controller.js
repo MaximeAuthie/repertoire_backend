@@ -1,6 +1,9 @@
 //! Importer le helper "catchAsync"
 const catchAsync = require('../helpers/catchAsync');
 
+//! Importer la dépendance Dotenv pour gérer les variables d'environnement
+require('dotenv').config();
+
 //! Importer le module "StatusCode" de la dépendance "http-status-codes"
 const { StatusCodes } = require('http-status-codes');
 
@@ -14,7 +17,7 @@ const emailValidator = require("email-validator");
 const transporter = nodemailer.createTransport({
     host: "smtp.orange.fr",
     port: 587,
-    secure: true,
+    secure: false,
     auth: {
       user: process.env.EMAIL_ACCOUNT,
       pass: process.env.EMAIL_PASSWORD,
@@ -61,3 +64,8 @@ const sendEmail = catchAsync(async (req, res) => {
             console.error(error);
         });
 });
+
+//! Exporter les méthode
+module.exports = {
+    sendEmail
+}
