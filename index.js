@@ -3,6 +3,7 @@ const contactRouter = require('./routes/contact.routes');
 const categoryRouter = require('./routes/category.routes');
 const userRouter = require('./routes/user.routes');
 const authRouter = require('./routes/auth.routes');
+const emailRouter = require('./routes/email.routes');
 
 //! Importer le middleware "checkJwt"
 const checkJwt = require('./middlewares/jwtCheck');
@@ -38,10 +39,11 @@ mongoose
     .catch((error) => console.error(error));
 
 //! Gérer les routes
-app.use('/contacts', cors(generalCorsOptions), checkJwt,contactRouter);
-app.use('/categories', cors(generalCorsOptions), checkJwt, categoryRouter);
-app.use('/users', cors(generalCorsOptions), userRouter);
-app.use('/auth', cors(userCorsOptions), authRouter);
+app.use('/api/contacts', cors(generalCorsOptions), checkJwt,contactRouter);
+app.use('/api/categories', cors(generalCorsOptions), checkJwt, categoryRouter);
+app.use('/api/users', cors(generalCorsOptions), userRouter);
+app.use('/api/auth', cors(userCorsOptions), authRouter);
+app.use('/api/email', cors(generalCorsOptions), emailRouter);
 
 //! Ecouter les erreurs du helper catchAsync
 app.use((err, req, res, next) => {
