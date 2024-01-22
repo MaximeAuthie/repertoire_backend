@@ -7,6 +7,9 @@ const catchAsync = require('../helpers/catchAsync');
 //! Importer le module "StatusCode" de la dépendance "http-status-codes"
 const { StatusCodes } = require('http-status-codes');
 
+//! Importer la dépendance "email-validator"
+const emailValidator = require("email-validator")
+
 //! Importer la dépendance Bcrypt
 const bcrypt = require('bcrypt');
 
@@ -23,6 +26,13 @@ const bcrypt = require('bcrypt');
             return res
                 .status(StatusCodes.CONFLICT)
                 .json({message: "Missing data"});
+        }
+
+        // Vérifier si le format de l'adresse email est correct
+        if (!emailValidator.validate(email)) {
+            return res
+                .status(StatusCodes.NOT_ACCEPTABLE)
+                .json({message: "Incorrect email adress format"});
         }
         
         // Vérifier si l'utilisateur existe déjà
@@ -87,6 +97,13 @@ const bcrypt = require('bcrypt');
             return res
                 .status(StatusCodes.CONFLICT)
                 .json({message: "Missing data"});
+        }
+
+        // Vérifier si le format de l'adresse email est correct
+        if (!emailValidator.validate(email)) {
+            return res
+                .status(StatusCodes.NOT_ACCEPTABLE)
+                .json({message: "Incorrect email adress format"});
         }
 
         // Vérifier si le password doit être modifié
