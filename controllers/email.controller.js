@@ -48,7 +48,7 @@ const sendEmail = catchAsync(async (req, res) => {
     const emailOptions = {
         from: `${firstName} ${lastName} <${email}>`,
         to: "authie.maxime@gmail.com",
-        subject: subject,
+        subject: `MY REPOSITORY : ${subject}`,
         text: content
     };
 
