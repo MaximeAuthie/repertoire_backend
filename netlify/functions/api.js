@@ -3,7 +3,7 @@ const contactRouter = require('../../routes/contact.routes');
 const categoryRouter = require('../../routes/category.routes');
 const userRouter = require('../../routes/user.routes');
 const authRouter = require('../../routes/auth.routes');
-const emailRouter = require('./routes/email.routes');
+const emailRouter = require('../../routes/email.routes');
 
 //! Importer le middleware "checkJwt"
 const checkJwt = require('../../middlewares/jwtCheck');
